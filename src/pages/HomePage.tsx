@@ -75,10 +75,10 @@ function CollectionsInfiniteGallery() {
 
 	return (
 		<div className='relative'>
-			<div className='pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-black/30 to-transparent z-10' />
-			<div className='pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-black/30 to-transparent z-10' />
+			<div className='pointer-events-none absolute inset-y-0 left-0 z-10 hidden w-24 bg-gradient-to-r from-black/30 to-transparent md:block' />
+			<div className='pointer-events-none absolute inset-y-0 right-0 z-10 hidden w-24 bg-gradient-to-l from-black/30 to-transparent md:block' />
 
-			<div className='absolute inset-y-0 left-0 z-20 flex items-center pl-2 pointer-events-none'>
+			<div className='absolute inset-y-0 left-0 z-20 flex items-center pl-3 md:pl-2 pointer-events-none'>
 				<Button
 					size='icon'
 					variant='secondary'
@@ -89,7 +89,7 @@ function CollectionsInfiniteGallery() {
 					<ChevronLeft className='h-5 w-5' />
 				</Button>
 			</div>
-			<div className='absolute inset-y-0 right-0 z-20 flex items-center pr-2 pointer-events-none'>
+			<div className='absolute inset-y-0 right-0 z-20 flex items-center pr-3 md:pr-2 pointer-events-none'>
 				<Button
 					size='icon'
 					variant='secondary'
@@ -111,10 +111,10 @@ function CollectionsInfiniteGallery() {
 				  Поэтому расстояние между слайдами делаем через padding у слайда.
 				  Так исчезает «шов/склейка» в месте зацикливания.
 				*/}
-				<div className='flex py-4 -ml-8'>
+				<div className='flex py-4 -ml-0 md:-ml-8'>
 					{slides.map(s => (
-						<div key={s.key} className='pl-8 flex-[0_0_auto]'>
-							<div className='relative h-96 w-[680px] max-w-[90vw] overflow-hidden rounded-2xl shadow-sm bg-transparent ring-1 ring-white/15'>
+						<div key={s.key} className='pl-0 md:pl-8 flex-[0_0_auto]'>
+							<div className='relative h-[66vw] min-h-[360px] max-h-[560px] w-screen overflow-hidden rounded-none bg-transparent shadow-sm ring-0 md:h-96 md:w-[680px] md:max-w-[90vw] md:rounded-2xl md:ring-1 md:ring-white/15'>
 								<Image src={s.src} alt={s.alt} fill className='object-cover' />
 								<div className='absolute inset-0 bg-gradient-to-t from-black/35 via-black/0 to-transparent' />
 							</div>
@@ -242,7 +242,9 @@ export default function HomePage() {
 							Наша Галерея
 						</h2>
 					</div>
+				</div>
 
+				<div className='relative left-1/2 w-screen -translate-x-1/2 md:left-auto md:w-auto md:translate-x-0'>
 					<CollectionsInfiniteGallery />
 				</div>
 			</section>
